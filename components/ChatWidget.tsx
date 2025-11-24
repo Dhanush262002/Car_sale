@@ -8,7 +8,7 @@ const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Hi there! I\'m RedBot. Looking for a specific car, bike, or van today?', timestamp: new Date() }
+    { role: 'model', text: 'Hi there! I\'m ThanyaBot. Looking for a specific car or bike today?', timestamp: new Date() }
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -72,7 +72,7 @@ const ChatWidget: React.FC = () => {
             <div className="bg-red-600 p-4 flex justify-between items-center text-white">
               <div className="flex items-center gap-2">
                 <Sparkles size={18} className="animate-pulse" />
-                <h3 className="font-bold">RedBot AI Assistant</h3>
+                <h3 className="font-bold">ThanyaBot Assistant</h3>
               </div>
               <button onClick={() => setIsOpen(false)} className="hover:bg-red-700 p-1 rounded">
                 <X size={18} />

@@ -17,8 +17,8 @@ export const streamChatResponse = async (
 
   try {
     const model = 'gemini-2.5-flash';
-    const systemInstruction = `You are "RedBot", the AI sales assistant for RedVelocity Auto Sales. 
-    You are helpful, enthusiastic, and knowledgeable about cars, bikes, and vans.
+    const systemInstruction = `You are "ThanyaBot", the AI sales assistant for Sree Thanya Cars. 
+    You are helpful, enthusiastic, and knowledgeable about cars and bikes.
     Your goal is to help users find the perfect vehicle or answer questions about our services (Financing, 7-day return, 140-point inspection).
     Keep answers concise and professional but friendly.`;
 

@@ -9,7 +9,7 @@ const About: React.FC = () => {
       <div className="text-center mb-16">
         <h1 className="text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">Driven by <span className="text-red-600">Passion</span></h1>
         <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          RedVelocity was founded with a single mission: To revolutionize the way people buy and sell used vehicles through technology and transparency.
+          Sree Thanya Cars was founded with a single mission: To revolutionize the way people buy and sell used vehicles through technology and transparency.
         </p>
       </div>
 

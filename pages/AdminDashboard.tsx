@@ -1,12 +1,14 @@
+
 import React, { useState } from 'react';
 import { useVehicles } from '../context/VehicleContext';
 import { Vehicle } from '../types';
-import { Edit, Trash2, Plus, Search, Lock, LogIn } from 'lucide-react';
+import { Edit, Trash2, Plus, Search, Lock, LogIn, RotateCcw } from 'lucide-react';
 import VehicleFormModal from '../components/VehicleFormModal';
 import { motion } from 'framer-motion';
+import { formatCurrency } from '../utils';
 
 const AdminDashboard: React.FC = () => {
-  const { vehicles, deleteVehicle, addVehicle, updateVehicle } = useVehicles();
+  const { vehicles, deleteVehicle, addVehicle, updateVehicle, resetData } = useVehicles();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -40,6 +42,12 @@ const AdminDashboard: React.FC = () => {
       updateVehicle(editingVehicle.id, vehicleData);
     } else {
       addVehicle(vehicleData);
+    }
+  };
+
+  const handleReset = () => {
+    if (window.confirm("Are you sure? This will delete all current changes and restore default dummy data.")) {
+        resetData();
     }
   };
 
@@ -99,12 +107,21 @@ const AdminDashboard: React.FC = () => {
             Manage your listings, update prices, and track inventory.
           </p>
         </div>
-        <button
-          onClick={handleAdd}
-          className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg shadow-lg hover:shadow-red-600/30 transition-all flex items-center gap-2"
-        >
-          <Plus size={20} /> Add Vehicle
-        </button>
+        <div className="flex gap-3">
+            <button
+                onClick={handleReset}
+                className="px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-800 dark:text-white font-bold rounded-lg transition-all flex items-center gap-2"
+                title="Reset to default dummy data"
+            >
+                <RotateCcw size={20} /> Reset Data
+            </button>
+            <button
+            onClick={handleAdd}
+            className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg shadow-lg hover:shadow-red-600/30 transition-all flex items-center gap-2"
+            >
+            <Plus size={20} /> Add Vehicle
+            </button>
+        </div>
       </div>
 
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
@@ -159,7 +176,7 @@ const AdminDashboard: React.FC = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 font-bold text-gray-900 dark:text-white">
-                      ${vehicle.price.toLocaleString()}
+                      {formatCurrency(vehicle.price)}
                     </td>
                     <td className="px-6 py-4">
                       {vehicle.year} • {vehicle.mileage.toLocaleString()} mi

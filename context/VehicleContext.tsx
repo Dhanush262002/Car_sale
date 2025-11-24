@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Vehicle, VehicleType } from '../types';
 import { MOCK_VEHICLES } from '../constants';
@@ -8,29 +9,38 @@ interface VehicleContextType {
   updateVehicle: (id: string, updatedVehicle: Partial<Vehicle>) => void;
   deleteVehicle: (id: string) => void;
   getVehicle: (id: string) => Vehicle | undefined;
+  resetData: () => void;
 }
 
 const VehicleContext = createContext<VehicleContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'sreethanya_vehicles_v2'; // Versioned key to force refresh
+
 export const VehicleProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Initialize from local storage or mock data
   const [vehicles, setVehicles] = useState<Vehicle[]>(() => {
-    const saved = localStorage.getItem('vehicles');
+    const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-      const parsed = JSON.parse(saved);
-      // Migration logic: check if data needs updates
-      return parsed.map((v: any) => ({
-        ...v,
-        images: v.images || (v.image ? [v.image] : ['https://picsum.photos/800/600']), // Backwards compatibility
-        description: v.description || "No description available for this vehicle."
-      }));
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+           return parsed.map((v: any) => ({
+            ...v,
+            images: v.images || (v.image ? [v.image] : ['https://via.placeholder.com/800x600']),
+            description: v.description || "No description available for this vehicle."
+          }));
+        }
+      } catch (e) {
+        console.error("Failed to parse vehicle data", e);
+      }
     }
+    // Default to mocks if storage is empty or invalid
     return MOCK_VEHICLES;
   });
 
   // Persist to local storage whenever vehicles change
   useEffect(() => {
-    localStorage.setItem('vehicles', JSON.stringify(vehicles));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(vehicles));
   }, [vehicles]);
 
   const addVehicle = (vehicleData: Omit<Vehicle, 'id'>) => {
@@ -53,8 +63,13 @@ export const VehicleProvider: React.FC<{ children: ReactNode }> = ({ children })
     return vehicles.find(v => v.id === id);
   };
 
+  const resetData = () => {
+    setVehicles(MOCK_VEHICLES);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(MOCK_VEHICLES));
+  };
+
   return (
-    <VehicleContext.Provider value={{ vehicles, addVehicle, updateVehicle, deleteVehicle, getVehicle }}>
+    <VehicleContext.Provider value={{ vehicles, addVehicle, updateVehicle, deleteVehicle, getVehicle, resetData }}>
       {children}
     </VehicleContext.Provider>
   );

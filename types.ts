@@ -1,7 +1,6 @@
 export enum VehicleType {
   CAR = 'Car',
-  BIKE = 'Bike',
-  VAN = 'Van'
+  BIKE = 'Bike'
 }
 
 export interface Vehicle {
@@ -35,15 +34,6 @@ export interface Testimonial {
   role: string;
   content: string;
   avatar: string;
-}
-
-export interface BlogPost {
-  id: number;
-  title: string;
-  date: string;
-  summary: string;
-  image: string;
-  category: string;
 }
 
 export interface ChatMessage {

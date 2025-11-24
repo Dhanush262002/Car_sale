@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { VehicleType, FilterState } from '../types';
 import { useVehicles } from '../context/VehicleContext';
@@ -11,10 +12,12 @@ interface ListingProps {
 
 const Listing: React.FC<ListingProps> = ({ type }) => {
   const { vehicles } = useVehicles();
+  
+  // FIXED: Set maxPrice to 1 Crore (10,000,000) by default so no vehicles are hidden
   const [filters, setFilters] = useState<FilterState>({
     type: type,
     minPrice: 0,
-    maxPrice: 100000,
+    maxPrice: 10000000, 
     brand: [],
     color: [],
     maxOwners: null
@@ -86,7 +89,7 @@ const Listing: React.FC<ListingProps> = ({ type }) => {
             <div className="text-center py-20 bg-gray-50 dark:bg-gray-900 rounded-xl border border-dashed border-gray-300 dark:border-gray-700">
               <h3 className="text-xl font-bold text-gray-500">No vehicles match your criteria</h3>
               <button 
-                onClick={() => setFilters(prev => ({...prev, maxPrice: 100000, brand: [], color: []}))}
+                onClick={() => setFilters(prev => ({...prev, maxPrice: 10000000, brand: [], color: []}))}
                 className="mt-4 text-red-600 font-semibold hover:underline"
               >
                 Clear Filters

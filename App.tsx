@@ -6,7 +6,6 @@ import ChatWidget from './components/ChatWidget';
 import Home from './pages/Home';
 import Listing from './pages/Listing';
 import Contact from './pages/Contact';
-import Blog from './pages/Blog';
 import About from './pages/About';
 import AdminDashboard from './pages/AdminDashboard';
 import VehicleDetails from './pages/VehicleDetails';
@@ -46,10 +45,8 @@ const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/cars" element={<Listing type={VehicleType.CAR} />} />
               <Route path="/bikes" element={<Listing type={VehicleType.BIKE} />} />
-              <Route path="/vans" element={<Listing type={VehicleType.VAN} />} />
               <Route path="/vehicle/:id" element={<VehicleDetails />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
               <Route path="/about" element={<About />} />
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>

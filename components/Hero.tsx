@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [textIndex, setTextIndex] = useState(0);
-  const words = ["Dream Car", "Perfect Bike", "Ideal Van"];
+  const words = ["Dream Car", "Perfect Bike"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-semibold mb-4 border border-red-200 dark:border-red-900/50">
-              New: AI-Powered Search
+              Welcome to Sree Thanya Cars
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-gray-900 dark:text-white leading-tight">
               Find Your <br />
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
               </span>
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-lg mt-4">
-              Premium pre-owned vehicles checked, certified, and delivered to your doorstep. Experience the velocity of modern car buying.
+              Premium pre-owned vehicles checked, certified, and delivered. Experience the quality of Sree Thanya Cars.
             </p>
           </motion.div>
 

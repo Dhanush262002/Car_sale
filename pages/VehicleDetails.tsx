@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useVehicles } from '../context/VehicleContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Share2, Heart, Fuel, Gauge, Settings, Users, Calendar, DollarSign, CheckCircle } from 'lucide-react';
+import { ChevronLeft, Share2, Heart, Fuel, Gauge, Settings, Users, Calendar, CheckCircle } from 'lucide-react';
+import { formatCurrency } from '../utils';
 
 const VehicleDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -93,9 +95,9 @@ const VehicleDetails: React.FC = () => {
           </h1>
 
           <div className="flex items-baseline gap-4 mb-8">
-            <span className="text-4xl font-bold text-red-600">${vehicle.price.toLocaleString()}</span>
+            <span className="text-4xl font-bold text-red-600">{formatCurrency(vehicle.price)}</span>
             <span className="text-gray-500 dark:text-gray-400 line-through text-lg">
-                ${(vehicle.price * 1.05).toLocaleString()}
+                {formatCurrency(vehicle.price * 1.05)}
             </span>
           </div>
 

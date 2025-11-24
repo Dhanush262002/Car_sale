@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Save } from 'lucide-react';
+import { X, Save, Upload, Trash } from 'lucide-react';
 import { Vehicle, VehicleType } from '../types';
 
 interface VehicleFormModalProps {
@@ -27,13 +28,10 @@ const VehicleFormModal: React.FC<VehicleFormModalProps> = ({ isOpen, onClose, on
     description: ''
   });
 
-  const [imagesInput, setImagesInput] = useState('');
-
   useEffect(() => {
     if (initialData) {
       const { id, ...rest } = initialData;
       setFormData(rest);
-      setImagesInput(rest.images ? rest.images.join('\n') : '');
     } else {
       setFormData({
         name: '',
@@ -49,7 +47,6 @@ const VehicleFormModal: React.FC<VehicleFormModalProps> = ({ isOpen, onClose, on
         featured: false,
         description: ''
       });
-      setImagesInput('');
     }
   }, [initialData, isOpen]);
 
@@ -69,17 +66,36 @@ const VehicleFormModal: React.FC<VehicleFormModalProps> = ({ isOpen, onClose, on
     }));
   };
 
-  const handleImagesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-     setImagesInput(e.target.value);
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files);
+      Promise.all(files.map(file => {
+        return new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      })).then(base64Images => {
+        setFormData(prev => ({
+          ...prev,
+          images: [...prev.images, ...base64Images]
+        }));
+      });
+    }
+  };
+
+  const removeImage = (index: number) => {
+    setFormData(prev => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== index)
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Process images input: split by newlines, trim, remove empty strings
-    const imagesArray = imagesInput.split('\n').map(url => url.trim()).filter(url => url.length > 0);
-    
     // If no images provided, use a placeholder
-    const finalImages = imagesArray.length > 0 ? imagesArray : ['https://via.placeholder.com/800x600?text=No+Image'];
+    const finalImages = formData.images.length > 0 ? formData.images : ['https://via.placeholder.com/800x600?text=No+Image'];
 
     onSubmit({
         ...formData,
@@ -129,12 +145,11 @@ const VehicleFormModal: React.FC<VehicleFormModalProps> = ({ isOpen, onClose, on
               >
                 <option value={VehicleType.CAR}>Car</option>
                 <option value={VehicleType.BIKE}>Bike</option>
-                <option value={VehicleType.VAN}>Van</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Price ($)</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Price (₹)</label>
               <input
                 required
                 type="number"
@@ -234,16 +249,37 @@ const VehicleFormModal: React.FC<VehicleFormModalProps> = ({ isOpen, onClose, on
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Image URLs (One per line)</label>
-              <textarea
-                required
-                rows={4}
-                value={imagesInput}
-                onChange={handleImagesChange}
-                className="w-full px-4 py-2 rounded-lg bg-gray-50 dark:bg-black border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-red-600 outline-none font-mono text-sm"
-                placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
-              />
-              <p className="text-xs text-gray-500 mt-1">Enter multiple image URLs, one on each line. The first image will be the main thumbnail.</p>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Vehicle Images</label>
+              
+              <div className="flex flex-wrap gap-4 mb-4">
+                <AnimatePresence>
+                  {formData.images.map((img, index) => (
+                    <motion.div 
+                      key={index} 
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      className="relative w-24 h-24 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 group"
+                    >
+                      <img src={img} alt={`Uploaded ${index}`} className="w-full h-full object-cover" />
+                      <button
+                        type="button"
+                        onClick={() => removeImage(index)}
+                        className="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <Trash size={12} />
+                      </button>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+                
+                <label className="w-24 h-24 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer hover:border-red-600 dark:hover:border-red-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                  <Upload size={24} className="text-gray-400 mb-1" />
+                  <span className="text-xs text-gray-500">Upload</span>
+                  <input type="file" multiple accept="image/*" onChange={handleImageUpload} className="hidden" />
+                </label>
+              </div>
+              <p className="text-xs text-gray-500">Upload images from your device. The first image will be the main thumbnail.</p>
             </div>
 
             <div className="md:col-span-2 flex items-center gap-2">

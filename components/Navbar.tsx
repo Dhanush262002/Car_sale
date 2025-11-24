@@ -16,8 +16,6 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
     { name: 'Home', path: '/' },
     { name: 'Cars', path: '/cars' },
     { name: 'Bikes', path: '/bikes' },
-    { name: 'Vans', path: '/vans' },
-    { name: 'Blog', path: '/blog' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -34,8 +32,8 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
                 <Car className="w-6 h-6 text-red-600" />
              </div>
           </div>
-          <span className="self-center text-2xl font-display font-bold whitespace-nowrap dark:text-white">
-            Red<span className="text-red-600">Velocity</span>
+          <span className="self-center text-xl md:text-2xl font-display font-bold whitespace-nowrap dark:text-white">
+            Sree Thanya <span className="text-red-600">Cars</span>
           </span>
         </Link>
         

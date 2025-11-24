@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { FilterState, VehicleType } from '../types';
+import { formatCurrency } from '../utils';
 
 interface FilterSidebarProps {
   filters: FilterState;
@@ -16,10 +18,8 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ filters, setFilters, clas
         return ['Tesla', 'Ford', 'BMW', 'Mercedes', 'Audi', 'Honda', 'Toyota', 'VW'];
       case VehicleType.BIKE:
         return ['Yamaha', 'Harley Davidson', 'Honda', 'BMW', 'Kawasaki', 'Ducati', 'Suzuki'];
-      case VehicleType.VAN:
-        return ['Mercedes', 'Ford', 'VW', 'Renault', 'Peugeot', 'Citroen'];
       default:
-        // Fallback or show all if no specific type is selected (though Listing page always sets one)
+        // Fallback
         return ['Tesla', 'Ford', 'BMW', 'Mercedes', 'Audi', 'Honda', 'Toyota', 'Yamaha', 'Harley Davidson', 'VW'];
     }
   };
@@ -50,7 +50,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ filters, setFilters, clas
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-lg font-bold text-gray-900 dark:text-white">Filters</h3>
         <button 
-          onClick={() => setFilters({ type: filters.type, minPrice: 0, maxPrice: 100000, brand: [], color: [], maxOwners: null })}
+          onClick={() => setFilters({ type: filters.type, minPrice: 0, maxPrice: 10000000, brand: [], color: [], maxOwners: null })}
           className="text-xs text-red-600 hover:underline"
         >
           Reset All
@@ -63,15 +63,15 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ filters, setFilters, clas
         <input
           type="range"
           min="0"
-          max="100000"
-          step="1000"
+          max="10000000"
+          step="10000"
           value={filters.maxPrice}
           onChange={(e) => setFilters(prev => ({ ...prev, maxPrice: Number(e.target.value) }))}
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-red-600"
         />
         <div className="flex justify-between mt-2 text-xs text-gray-500">
-          <span>$0</span>
-          <span>${filters.maxPrice.toLocaleString()}</span>
+          <span>₹0</span>
+          <span>{formatCurrency(filters.maxPrice)}</span>
         </div>
       </div>
 

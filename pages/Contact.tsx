@@ -21,7 +21,7 @@ const Contact: React.FC = () => {
             Get in <span className="text-red-600">Touch</span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-            Have questions about a specific car or need financing help? Our team is ready to assist you.
+            Have questions about a specific car or need financing help? Our team at Sree Thanya Cars is ready to assist you.
           </p>
           
           <div className="space-y-6">
@@ -41,7 +41,7 @@ const Contact: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900 dark:text-white">Email</h3>
-                <p className="text-gray-600 dark:text-gray-400">sales@redvelocity.com</p>
+                <p className="text-gray-600 dark:text-gray-400">sales@sreethanyacars.com</p>
               </div>
             </div>
 

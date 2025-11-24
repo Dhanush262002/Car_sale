@@ -1,192 +1,223 @@
-import { Vehicle, VehicleType, Testimonial, BlogPost } from './types';
+
+import { Vehicle, VehicleType, Testimonial } from './types';
 
 export const MOCK_VEHICLES: Vehicle[] = [
+  // CARS
   {
-    id: '1',
-    name: 'Tesla Model 3 Performance',
+    id: 'car-1',
+    name: 'Toyota Fortuner Legender',
     type: VehicleType.CAR,
-    price: 45000,
+    price: 4500000,
     images: [
-      'https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=1000',
-      'https://images.unsplash.com/photo-1536700503339-1e4b06520771?q=80&w=1000',
-      'https://images.unsplash.com/photo-1561580125-028ee3bd62eb?q=80&w=1000',
-      'https://images.unsplash.com/photo-1571127236794-81c0bbfe1ce3?q=80&w=1000',
+      'https://images.unsplash.com/photo-1626847037657-fd34d2eb3b52?q=80&w=1000',
+      'https://images.unsplash.com/photo-1533473359331-0135ef1bcfb0?q=80&w=1000',
       'https://images.unsplash.com/photo-1494905998402-395d579af979?q=80&w=1000'
     ],
-    year: 2022,
-    mileage: 12000,
-    fuel: 'Electric',
-    transmission: 'Automatic',
-    color: 'Red',
-    owners: 1,
-    featured: true,
-    description: "Experience the thrill of electric performance. This Model 3 features a dual-motor AWD system, accelerating from 0-60 mph in just 3.1 seconds. Comes with Full Self-Driving capability hardware, premium white interior, and 20-inch Übertaurbine Wheels."
-  },
-  {
-    id: '2',
-    name: 'Ford Mustang GT',
-    type: VehicleType.CAR,
-    price: 38000,
-    images: [
-      'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?q=80&w=1000',
-      'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000',
-      'https://images.unsplash.com/photo-1533473359331-0135ef1bcfb0?q=80&w=1000',
-      'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1000'
-    ],
-    year: 2020,
-    mileage: 25000,
-    fuel: 'Petrol',
-    transmission: 'Manual',
-    color: 'Black',
-    owners: 2,
-    featured: true,
-    description: "The American muscle icon. 5.0L V8 engine delivering raw power and an unmistakable roar. Features leather Recaro seats, Brembo brakes, and the Performance Pack Level 2."
-  },
-  {
-    id: '3',
-    name: 'Yamaha R1',
-    type: VehicleType.BIKE,
-    price: 18000,
-    images: [
-      'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=1000',
-      'https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?q=80&w=1000',
-      'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1000',
-      'https://images.unsplash.com/photo-1622185135505-2d795043906a?q=80&w=1000'
-    ],
     year: 2023,
-    mileage: 1500,
-    fuel: 'Petrol',
-    transmission: 'Manual',
-    color: 'Blue',
-    owners: 1,
-    featured: true,
-    description: "Born from MotoGP. The R1 features a crossplane crankshaft engine, comprehensive electronic rider aids, and track-ready suspension. Meticulously maintained and never dropped."
-  },
-  {
-    id: '4',
-    name: 'Mercedes-Benz Sprinter',
-    type: VehicleType.VAN,
-    price: 55000,
-    images: [
-      'https://images.unsplash.com/photo-1626084214247-b371131fa432?q=80&w=1000',
-      'https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=1000',
-      'https://images.unsplash.com/photo-1520031441872-26514dd970c3?q=80&w=1000',
-      'https://images.unsplash.com/photo-1616455579100-2ceaa4eb2d37?q=80&w=1000'
-    ],
-    year: 2021,
-    mileage: 40000,
+    mileage: 12000,
     fuel: 'Diesel',
     transmission: 'Automatic',
     color: 'White',
     owners: 1,
-    description: "The ultimate utility vehicle. High roof, extended wheelbase version perfect for camper conversion or logistics. Features 360-degree camera, heated seats, and advanced tow assist."
+    featured: true,
+    description: "The King of SUVs. This Fortuner Legender 4x4 comes with a powerful 2.8L Diesel engine, dual-tone leather interiors, wireless charging, and commanding road presence. Meticulously maintained by a single owner."
   },
   {
-    id: '5',
-    name: 'Honda Civic Type R',
+    id: 'car-2',
+    name: 'BMW 5 Series 530i',
     type: VehicleType.CAR,
-    price: 42000,
+    price: 5800000,
     images: [
-      'https://images.unsplash.com/photo-1605816988088-774f34dcc42a?q=80&w=1000',
-      'https://images.unsplash.com/photo-1606152421811-aa6633cc4210?q=80&w=1000',
-      'https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=1000',
-      'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1000'
+      'https://images.unsplash.com/photo-1555215695-3004980adade?q=80&w=1000',
+      'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1000',
+      'https://images.unsplash.com/photo-1556189250-72ba954e9664?q=80&w=1000'
+    ],
+    year: 2022,
+    mileage: 18000,
+    fuel: 'Petrol',
+    transmission: 'Automatic',
+    color: 'Blue',
+    owners: 1,
+    featured: true,
+    description: "Experience sheer driving pleasure. This 5 Series M Sport features gesture control, laser lights, Harman Kardon sound system, and a silky smooth petrol engine. Company serviced with full history."
+  },
+  {
+    id: 'car-3',
+    name: 'Mahindra Thar LX Hard Top',
+    type: VehicleType.CAR,
+    price: 1650000,
+    images: [
+      'https://images.unsplash.com/photo-1669288647496-e175402a7b62?q=80&w=1000',
+      'https://images.unsplash.com/photo-1619682817481-e994891cd1f5?q=80&w=1000',
+      'https://images.unsplash.com/photo-1533473359331-0135ef1bcfb0?q=80&w=1000'
+    ],
+    year: 2023,
+    mileage: 8000,
+    fuel: 'Diesel',
+    transmission: 'Automatic',
+    color: 'Red',
+    owners: 1,
+    featured: false,
+    description: "Go anywhere in style. The iconic Thar with 4x4 capability, convertible hard top option, and rugged interiors. Perfect for weekend getaways and off-road adventures."
+  },
+  {
+    id: 'car-4',
+    name: 'Mercedes-Benz C-Class',
+    type: VehicleType.CAR,
+    price: 4200000,
+    images: [
+      'https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1000',
+      'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1000',
+      'https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1000'
+    ],
+    year: 2021,
+    mileage: 25000,
+    fuel: 'Diesel',
+    transmission: 'Automatic',
+    color: 'Silver',
+    owners: 2,
+    featured: false,
+    description: "Luxury meets comfort. C220d Progressive edition with panoramic sunroof, ambient lighting (64 colors), and active brake assist. Recently serviced with new tyres."
+  },
+  {
+    id: 'car-5',
+    name: 'Hyundai Creta SX(O)',
+    type: VehicleType.CAR,
+    price: 1800000,
+    images: [
+      'https://images.unsplash.com/photo-1615764835848-15c2d3a35d94?q=80&w=1000',
+      'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1000',
+      'https://images.unsplash.com/photo-1582211993206-a67dd3f12674?q=80&w=1000'
     ],
     year: 2023,
     mileage: 5000,
     fuel: 'Petrol',
+    transmission: 'Automatic',
+    color: 'Black',
+    owners: 1,
+    featured: true,
+    description: "Top model Creta with ADAS features, Bose sound system, ventilated seats, and panoramic sunroof. Practically brand new condition."
+  },
+
+  // BIKES
+  {
+    id: 'bike-1',
+    name: 'Royal Enfield Continental GT 650',
+    type: VehicleType.BIKE,
+    price: 340000,
+    images: [
+      'https://images.unsplash.com/photo-1622185135505-2d795043906a?q=80&w=1000',
+      'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1000',
+      'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=1000'
+    ],
+    year: 2022,
+    mileage: 4500,
+    fuel: 'Petrol',
+    transmission: 'Manual',
+    color: 'Chrome',
+    owners: 1,
+    featured: true,
+    description: "The ultimate cafe racer. Mr. Clean edition with chrome tank. Fitted with AEW exhaust, bar-end mirrors, and sump guard. Sounds aggressive and rides smooth."
+  },
+  {
+    id: 'bike-2',
+    name: 'Kawasaki Ninja ZX-10R',
+    type: VehicleType.BIKE,
+    price: 1550000,
+    images: [
+      'https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?q=80&w=1000',
+      'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=1000',
+      'https://images.unsplash.com/photo-1615172282427-9a5752d358cd?q=80&w=1000'
+    ],
+    year: 2023,
+    mileage: 2000,
+    fuel: 'Petrol',
+    transmission: 'Manual',
+    color: 'Green',
+    owners: 1,
+    featured: true,
+    description: "Track weapon. 998cc inline-four screamer. Comes with KQS (Kawasaki Quick Shifter), Launch Control, and Cornering Management Function. Never tracked, only highway ridden."
+  },
+  {
+    id: 'bike-3',
+    name: 'Triumph Tiger 900 Rally Pro',
+    type: VehicleType.BIKE,
+    price: 1400000,
+    images: [
+      'https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?q=80&w=1000',
+      'https://images.unsplash.com/photo-1558981248-f9d2d09c258d?q=80&w=1000',
+      'https://images.unsplash.com/photo-1525160354320-54e6eb12336e?q=80&w=1000'
+    ],
+    year: 2021,
+    mileage: 15000,
+    fuel: 'Petrol',
     transmission: 'Manual',
     color: 'White',
     owners: 1,
-    description: "The fastest FWD car on the market. Precise handling, aggressive aerodynamics, and a 6-speed manual gearbox that is a joy to use. Comes with championship white paint."
+    featured: false,
+    description: "Adventure ready. Top spec Rally Pro model with heated seats, shift assist, and off-road pro mode. Includes full luggage panniers and top box."
   },
   {
-    id: '6',
+    id: 'bike-4',
     name: 'Harley Davidson Iron 883',
     type: VehicleType.BIKE,
-    price: 12000,
+    price: 850000,
     images: [
       'https://images.unsplash.com/photo-1558981806-ec527fa84f3d?q=80&w=1000',
       'https://images.unsplash.com/photo-1615172282427-9a5752d358cd?q=80&w=1000',
-      'https://images.unsplash.com/photo-1525160354320-54e6eb12336e?q=80&w=1000',
-      'https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?q=80&w=1000'
+      'https://images.unsplash.com/photo-1525160354320-54e6eb12336e?q=80&w=1000'
     ],
     year: 2019,
-    mileage: 8000,
+    mileage: 9500,
     fuel: 'Petrol',
     transmission: 'Manual',
     color: 'Black',
     owners: 2,
-    description: "Raw, blacked-out, stripped-down custom style. This Iron 883 features upgraded Vance & Hines exhaust, custom grips, and a comfortable solo seat."
+    featured: false,
+    description: "American muscle on two wheels. Matte black finish, Screamin' Eagle intake, and Vance & Hines Shortshots. A head-turner on every signal."
   },
   {
-    id: '7',
-    name: 'VW Transporter T6',
-    type: VehicleType.VAN,
-    price: 32000,
+    id: 'bike-5',
+    name: 'KTM 390 Duke',
+    type: VehicleType.BIKE,
+    price: 280000,
     images: [
-      'https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000',
-      'https://images.unsplash.com/photo-1519806390608-61f894178a9c?q=80&w=1000',
-      'https://images.unsplash.com/photo-1625902382588-1a5209da01cd?q=80&w=1000'
+      'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=1000',
+      'https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?q=80&w=1000',
+      'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1000'
     ],
-    year: 2018,
-    mileage: 60000,
-    fuel: 'Diesel',
+    year: 2023,
+    mileage: 3000,
+    fuel: 'Petrol',
     transmission: 'Manual',
-    color: 'Grey',
-    owners: 2,
-    description: "Reliable and versatile. Recently serviced with new timing belt. Includes roof rack and ply-lined cargo area. Perfect for tradespeople."
+    color: 'Orange',
+    owners: 1,
+    featured: false,
+    description: "Corner rocket. The gen-3 Duke with adjustable suspension, launch control, and track mode. Perfect condition, under warranty."
   }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    name: "Alex Johnson",
-    role: "Car Enthusiast",
-    content: "The best purchasing experience I've ever had. The AI suggestions were spot on!",
-    avatar: "https://picsum.photos/id/1005/100/100"
-  },
-  {
-    id: 2,
-    name: "Sarah Williams",
-    role: "Daily Commuter",
-    content: "Sold my old bike and bought a car in under 24 hours. Incredible speed and service.",
-    avatar: "https://picsum.photos/id/1011/100/100"
-  },
-  {
-    id: 3,
-    name: "Michael Chen",
+    name: "Rajesh Kumar",
     role: "Business Owner",
-    content: "Found the perfect van for my logistics business. Highly recommended.",
-    avatar: "https://picsum.photos/id/1012/100/100"
-  }
-];
-
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    id: 1,
-    title: "Top 5 Electric Cars of 2024",
-    date: "Oct 15, 2024",
-    summary: "A deep dive into the most efficient and powerful EVs hitting the market this year.",
-    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=1000",
-    category: "Reviews"
+    content: "Sree Thanya Cars helped me find my dream Fortuner. The process was transparent and the 'Lakh' pricing format made it easy to understand values immediately.",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200"
   },
   {
     id: 2,
-    title: "Maintenance Tips for High Mileage Bikes",
-    date: "Oct 12, 2024",
-    summary: "Keep your two-wheeler running smooth with these essential maintenance checks.",
-    image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1000",
-    category: "Maintenance"
+    name: "Priya Sharma",
+    role: "Software Engineer",
+    content: "Bought my first luxury car here. The 7-day return policy gave me peace of mind, but I fell in love with the BMW instantly!",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200"
   },
   {
     id: 3,
-    title: "Why Vans are the New Mobile Offices",
-    date: "Oct 08, 2024",
-    summary: "Exploring the trend of converting utility vans into comfortable remote workspaces.",
-    image: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=1000",
-    category: "Lifestyle"
+    name: "Arun Vijay",
+    role: "Bike Enthusiast",
+    content: "The selection of premium bikes is unmatched. Found a mint condition Harley Iron 883. Highly recommended!",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200"
   }
 ];
 
@@ -197,10 +228,37 @@ export const FAQS = [
   },
   {
     question: "Do you offer financing options?",
-    answer: "Yes, we partner with major banks to offer competitive interest rates starting at 8.9% APR for qualified buyers."
+    answer: "Yes, we partner with major banks like HDFC, ICICI, and SBI to offer competitive interest rates starting at 8.9% APR for qualified buyers."
   },
   {
     question: "Are the vehicles inspected?",
     answer: "Every vehicle undergoes a rigorous 140-point inspection by certified mechanics before being listed on our platform."
+  }
+];
+
+export const BLOG_POSTS = [
+  {
+    id: 1,
+    title: "The Future of Electric Vehicles in India",
+    summary: "Explore how EVs are changing the automotive landscape with increased range and charging infrastructure growth.",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=1000",
+    category: "Technology",
+    date: "Mar 15, 2024"
+  },
+  {
+    id: 2,
+    title: "Top 5 Maintenance Tips for Summer",
+    summary: "Get your car ready for the heat with these essential maintenance checks to prevent breakdowns.",
+    image: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=1000",
+    category: "Maintenance",
+    date: "Apr 02, 2024"
+  },
+  {
+    id: 3,
+    title: "Buying vs Leasing: What's Right for You?",
+    summary: "A comprehensive guide to understanding the financial pros and cons of buying versus leasing a new car.",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1000",
+    category: "Finance",
+    date: "Apr 10, 2024"
   }
 ];

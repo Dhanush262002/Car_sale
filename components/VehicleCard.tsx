@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Fuel, Gauge, Settings, Users } from 'lucide-react';
 import { Vehicle } from '../types';
 import { Link } from 'react-router-dom';
+import { formatCurrency } from '../utils';
 
 interface VehicleCardProps {
   vehicle: Vehicle;
@@ -40,7 +42,7 @@ const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle }) => {
       <div className="p-5">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 truncate">{vehicle.name}</h3>
         <p className="text-2xl font-display font-bold text-red-600 mb-4">
-          ${vehicle.price.toLocaleString()}
+          {formatCurrency(vehicle.price)}
         </p>
 
         <div className="grid grid-cols-2 gap-3 mb-4">

@@ -9,10 +9,10 @@ const Footer: React.FC = () => {
           
           <div className="space-y-4">
             <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white">
-              Red<span className="text-red-600">Velocity</span>
+              Sree Thanya <span className="text-red-600">Cars</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Experience the future of vehicle buying. Premium cars, bikes, and vans curated for excellence.
+              Experience the future of vehicle buying. Premium cars and bikes curated for excellence.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-red-600 transition-colors"><Facebook size={20} /></a>
@@ -27,7 +27,6 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li><a href="#/cars" className="hover:text-red-600">Buy a Car</a></li>
               <li><a href="#/bikes" className="hover:text-red-600">Buy a Bike</a></li>
-              <li><a href="#/vans" className="hover:text-red-600">Buy a Van</a></li>
               <li><a href="#/about" className="hover:text-red-600">About Us</a></li>
             </ul>
           </div>
@@ -49,7 +48,7 @@ const Footer: React.FC = () => {
                 <Phone size={16} className="text-red-600" /> +1 (555) 123-4567
               </li>
               <li className="flex items-center gap-2">
-                <Mail size={16} className="text-red-600" /> sales@redvelocity.com
+                <Mail size={16} className="text-red-600" /> sales@sreethanyacars.com
               </li>
               <li className="flex items-center gap-2">
                 <MapPin size={16} className="text-red-600" /> 123 Neon Avenue, Tech City
@@ -60,7 +59,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500 dark:text-gray-500">
-          © {new Date().getFullYear()} RedVelocity Auto Sales. All rights reserved.
+          © {new Date().getFullYear()} Sree Thanya Cars. All rights reserved.
         </div>
       </div>
     </footer>
