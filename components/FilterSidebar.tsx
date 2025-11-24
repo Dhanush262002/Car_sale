@@ -8,7 +8,23 @@ interface FilterSidebarProps {
 }
 
 const FilterSidebar: React.FC<FilterSidebarProps> = ({ filters, setFilters, className }) => {
-  const brands = ['Tesla', 'Ford', 'BMW', 'Mercedes', 'Audi', 'Honda', 'Toyota', 'Yamaha', 'Harley Davidson'];
+  
+  // Define brands specific to each vehicle type
+  const getBrandsByType = (type?: VehicleType) => {
+    switch (type) {
+      case VehicleType.CAR:
+        return ['Tesla', 'Ford', 'BMW', 'Mercedes', 'Audi', 'Honda', 'Toyota', 'VW'];
+      case VehicleType.BIKE:
+        return ['Yamaha', 'Harley Davidson', 'Honda', 'BMW', 'Kawasaki', 'Ducati', 'Suzuki'];
+      case VehicleType.VAN:
+        return ['Mercedes', 'Ford', 'VW', 'Renault', 'Peugeot', 'Citroen'];
+      default:
+        // Fallback or show all if no specific type is selected (though Listing page always sets one)
+        return ['Tesla', 'Ford', 'BMW', 'Mercedes', 'Audi', 'Honda', 'Toyota', 'Yamaha', 'Harley Davidson', 'VW'];
+    }
+  };
+
+  const currentBrands = getBrandsByType(filters.type);
   const colors = ['Red', 'Blue', 'Black', 'White', 'Silver', 'Grey'];
 
   const handleBrandChange = (brand: string) => {
@@ -59,12 +75,14 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ filters, setFilters, clas
         </div>
       </div>
 
-      {/* Brand */}
+      {/* Brand - Dynamic based on Vehicle Type */}
       <div className="mb-8">
-        <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Brand</h4>
-        <div className="space-y-2 max-h-40 overflow-y-auto pr-2 custom-scrollbar">
-          {brands.map(brand => (
-            <label key={brand} className="flex items-center space-x-2 cursor-pointer">
+        <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+          {filters.type ? `${filters.type} Brands` : 'Brands'}
+        </h4>
+        <div className="space-y-2 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
+          {currentBrands.map(brand => (
+            <label key={brand} className="flex items-center space-x-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 p-1 rounded transition-colors">
               <input
                 type="checkbox"
                 checked={filters.brand.includes(brand)}
